@@ -1,0 +1,8 @@
+.budget-feedback, 
+.expense-feedback{
+    display: none;  
+}
+
+.show-item{
+    display: block;
+}
