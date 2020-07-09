@@ -21,7 +21,7 @@
 
                         <form id="budget-form">
                             <div class=" form-group my-2">
-                                <input type="number" id="budget-input" class="form-control" placeholder="Amount"/>
+                                <input type="number" id="budget-input" class="form-control" placeholder="Amount" required/>
                             </div>
                             <div class=" form-group">
                                 <button type="submit" class="btn btn-sm btn-raised btn-outline-success waves-effect" id="budget-submit">
@@ -33,16 +33,16 @@
     
                     </div>
                 </div>
-                <div class="alert alert-danger text-capitalize expense-feedback"></div> 
+                <div class=" alert alert-danger text-capitalize expense-feedback"></div> 
                 <div class="card my-4 shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
                     <div class="card-header text-center bg-white"><strong>EXPENSE</strong></div>
                     <div class="card-body text-danger">
                         <form id="expense-form">
                             <div class=" form-group my-2">
-                                <input type="text" id="expense-input" class="form-control" placeholder="Name of Expense">
+                                <input type="text" id="expense-input" class="form-control" placeholder="Name of Expense" required>
                             </div>
                             <div class=" form-group my-2">
-                                <input type="number" id="expense-amount-input" class="form-control" placeholder="Amount">
+                                <input type="number" id="expense-amount-input" class="form-control" placeholder="Amount" required>
                             </div>
                             <div class=" form-group">
                                 <button type="submit" class="btn btn-sm btn-raised btn-outline-danger waves-effect">
@@ -81,8 +81,8 @@
                                     <div class="d-flex justify-content-center">
                                         <i class="fas fa-dollar-sign my-2"></i>
                                     </div>
-                                    <p class="text-secondary text-center h5">
-                                        <strong><span>$</span><span id="balance">0</span></strong>
+                                    <p class="text-secondary text-center h5" id="balance">
+                                        <strong><span>$</span><span id="balance-amount">0</span></strong>
                                     </p>
                                 </div>    
                             </div>
