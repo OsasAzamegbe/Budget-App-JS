@@ -16,10 +16,10 @@
                 <div class="card my-4 shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
                     <div class="card-header bg-white text-center "><strong>BUDGET</strong></div>
                     <div class="card-body text-success">
-                        <!-- <h6 class="card-title font-weight-normal">Please Enter Your Budget</h6> -->
-                        <form>
+
+                        <form id="budget-form">
                             <div class=" form-group my-2">
-                                <input type="text" id="budget-amount" class="form-control" placeholder="Amount" required/>
+                                <input type="text" id="budget-input" class="form-control" placeholder="Amount" required/>
                             </div>
                             <div class=" form-group">
                                 <button type="submit" class="btn btn-sm btn-raised btn-outline-success waves-effect">
@@ -35,19 +35,19 @@
                 <div class="card my-4 shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
                     <div class="card-header text-center bg-white"><strong>EXPENSE</strong></div>
                     <div class="card-body text-danger">
-                        <!-- <h6 class="card-title font-weight-normal">Please Enter Your Expense</h6> -->
-                        <div class=" form-group my-2">
-                            <input type="text" id="expense-name" class="form-control" placeholder="Name of Expense">
-                        </div>
-                        <div class=" form-group my-2">
-                            <input type="text" id="expense-amount" class="form-control" placeholder="Amount">
-                        </div>
-                        <div class=" form-group">
-                            <button type="submit" class="btn btn-sm btn-raised btn-outline-danger waves-effect">
-                                Add Expense
-                            </button>
-                        </div>
-    
+                        <form id="expense-form">
+                            <div class=" form-group my-2">
+                                <input type="text" id="expense-input" class="form-control" placeholder="Name of Expense">
+                            </div>
+                            <div class=" form-group my-2">
+                                <input type="text" id="expense-amount-input" class="form-control" placeholder="Amount">
+                            </div>
+                            <div class=" form-group">
+                                <button type="submit" class="btn btn-sm btn-raised btn-outline-danger waves-effect">
+                                    Add Expense
+                                </button>
+                            </div>
+                        </form>   
                     </div>
                 </div>
             </div>
@@ -61,24 +61,24 @@
                                     <div class="d-flex justify-content-center">
                                         <i class="far fa-money-bill-alt my-2"></i>
                                     </div>
-                                    <p class="text-success text-center h5"><strong>$ 0</strong></p>                                    
+                                    <p class="text-success text-center h5" id="budget-amount"><strong>$ 0</strong></p>                                    
                                 </div>
                                 <div class="flex-column">
                                     <p class="font-monospace h5">Expenses</p>                                    
                                     <div class="d-flex justify-content-center">
                                         <i class="far fa-credit-card my-2"></i>
                                     </div>
-                                    <p class="text-danger text-center h5"><strong>$ 0</strong></p>
+                                    <p class="text-danger text-center h5" id="expense-amount"><strong>$ 0</strong></p>
                                 </div>
                                 <div class="flex-column">
                                     <p class="font-monospace h5">Balance</p>                                    
                                     <div class="d-flex justify-content-center">
                                         <i class="fas fa-dollar-sign my-2"></i>
                                     </div>
-                                    <p class="text-secondary text-center h5"><strong>$ 0</strong></p>
+                                    <p class="text-secondary text-center h5" id="balance"><strong>$ 0</strong></p>
                                 </div>    
                             </div>
-                            <div class="d-flex flex-row justify-content-evenly my-4" name="expense display">
+                            <div class="d-flex flex-row justify-content-evenly my-4" name="expense display headers">
                                 <div class="flex-column">
                                     <p class="font-monospace h7">Expense Title</p>
                                                                         
@@ -87,6 +87,13 @@
                                     <p class="font-monospace h7">Expense Value</p>                                    
                                     
                                 </div>  
+                            </div>
+                            <div class="d-flex flex-row justify-content-evenly my-4" name="expense display list">
+                                <div class="flex-column">
+                                    <ul id="expense-list">
+                                        
+                                    </ul id="expense-list">
+                                </div>
                             </div>
                         </div>                        
                     </div>
