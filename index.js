@@ -12,7 +12,8 @@ class UI {
         this.balanceAmount = document.getElementById("balance-amount");
         this.expenseList = document.getElementById("expense-list");
         this.balance = document.getElementById("balance");
-        this.itemList = [];
+        this.itemList = {};
+        this.total = 0;
         this.itemId = 0;
 
     }
@@ -43,7 +44,8 @@ class UI {
 
     // show balance
     showBalance(){
-        const expense = this.totalExpense();
+        const expense = this.total;
+        this.expenseAmount.textContent = expense;
         const total = parseInt(this.budgetAmount.textContent) - expense;
         this.balanceAmount.textContent = total;
         if (total < 0){
@@ -76,30 +78,30 @@ class UI {
             this.expenseInput.value = '';
             this.expenseAmountInput.value = '';
             let expense = {
-                id: this.itemId,
                 title: expenseName,
                 amount,
-            }
-            this.itemId++;
-            this.itemList.push(expense);
+            }            
+            this.itemList[this.itemId] = expense;            
             this.addExpense(expense);
             this.showBalance();
+            this.itemId++;
         }
         
     }
 
     // add expense
     addExpense(expense){
+        this.total += expense.amount;
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="d-flex row row-col-3 expense-item justify-content-between align-items-baseline text-danger">
             <p class="h7 text-capitalize list-item col" >- ${expense.title}</p>
             <p class="h6 list-item text col col-lg-4" >${expense.amount}</p>
             <div class="col col-lg-2">
-                <a href="#" class="text-info edit-icon mx-2" data-id=${expense.id}>
+                <a href="#" class="text-info edit-icon mx-2" data-id=${this.itemId}>
                     <i class="fas fa-edit"></i>
                 </a>
-                <a href="#" class="text-danger delete-icon mx-2" data-id=${expense.id}>
+                <a href="#" class="text-danger delete-icon mx-2" data-id=${this.itemId}>
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
@@ -108,25 +110,13 @@ class UI {
         this.expenseList.appendChild(div);
     }
 
-    //total expense
-    totalExpense(){
-        let total = 0
-        total = this.itemList.reduce((acc, curr) =>{
-            acc += curr.amount;
-            return acc;
-        }, 0);
-        this.expenseAmount.textContent = total;
-        return total;
-    }
 
     //edit expense
     editExpense(element){
         const id = parseInt(element.dataset.id);
-        const expense = this.itemList.filter((item)=>{
-            return item.id === id;
-        });
-        this.expenseInput.value = expense[0].title;
-        this.expenseAmountInput.value = expense[0].amount;
+        const expense = this.itemList[id];
+        this.expenseInput.value = expense.title;
+        this.expenseAmountInput.value = expense.amount;
         this.deleteExpense(element);
     }
 
@@ -136,9 +126,8 @@ class UI {
         const parent = element.parentElement.parentElement.parentElement;
 
         this.expenseList.removeChild(parent);
-        this.itemList = this.itemList.filter((item)=>{
-            return item.id != id;
-        });
+        this.total -= this.itemList[id].amount;
+        delete this.itemList[id];
         this.showBalance();
     }
 }

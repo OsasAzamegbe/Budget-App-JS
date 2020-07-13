@@ -7,9 +7,10 @@
     display: block;
 }
 
+.delete-icon,
 .edit-icon{
     cursor: pointer;
-    /* font-size: 1rem; */
+    font-size: 1rem;
     text-decoration: none !important;
 }
 
