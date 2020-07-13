@@ -118,6 +118,29 @@ class UI {
         this.expenseAmount.textContent = total;
         return total;
     }
+
+    //edit expense
+    editExpense(element){
+        const id = parseInt(element.dataset.id);
+        const expense = this.itemList.filter((item)=>{
+            return item.id === id;
+        });
+        this.expenseInput.value = expense[0].title;
+        this.expenseAmountInput.value = expense[0].amount;
+        this.deleteExpense(element);
+    }
+
+    //delete expense
+    deleteExpense(element){
+        const id = parseInt(element.dataset.id);
+        const parent = element.parentElement.parentElement.parentElement;
+
+        this.expenseList.removeChild(parent);
+        this.itemList = this.itemList.filter((item)=>{
+            return item.id != id;
+        });
+        this.showBalance();
+    }
 }
 
 function eventListeners(){
@@ -135,14 +158,20 @@ function eventListeners(){
     })
 
     // expense form submit
-    expenseForm.addEventListener('submit', function(e){
-        e.preventDefault();
+    expenseForm.addEventListener('submit', function(event){
+        event.preventDefault();
         ui.submitExpenseForm();
     })
 
     // expense click
-    expenseList.addEventListener('click', function(){
-        
+    expenseList.addEventListener('click', function(event){
+        event.preventDefault();
+        const parent = event.target.parentElement;
+        if (parent.classList.contains('edit-icon')){
+            ui.editExpense(parent);
+        } else if (parent.classList.contains('delete-icon')){
+            ui.deleteExpense(parent);
+        }
     })
 
 
