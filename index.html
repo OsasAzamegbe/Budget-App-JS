@@ -56,8 +56,8 @@
             <div class="d-flex flex-column  ml-4" name="budget expenses and Balance display">
                 <div class="card my-4  shadow p-3 mb-5 bg-white rounded" style="width: 100vmin; min-height: 70vh;">
                     <div class="card-body">
-                        <div class="container">
-                            <div class="d-flex flex-row justify-content-evenly my-4" name="icons row">
+                        <div class="container px-5">
+                            <div class="d-flex flex-row justify-content-between my-4" name="icons row">
                                 <div class="flex-column">
                                     <p class="font-monospace h5">Budget</p>
                                     <div class="d-flex justify-content-center">
@@ -86,22 +86,28 @@
                                     </p>
                                 </div>    
                             </div>
-                            <div class="d-flex flex-row justify-content-evenly my-4" name="expense display headers">
-                                <div class="flex-column">
-                                    <p class="font-monospace h7">Expense Title</p>
-                                                                        
-                                </div>
-                                <div class="flex-column">
-                                    <p class="font-monospace h7">Expense Value</p>                                    
-                                    
-                                </div>  
+                            <div class="d-flex row row-col-3 justify-content-between" name="expense display headers">
+                                <p class="font-monospace h7 col list-item">Expense Title</p> 
+                                <p class="font-monospace h7 col list-item">Expense Value</p>
+                                <p class="list-item col col-lg-2" ></p>
                             </div>
-                            <div class="d-flex flex-row justify-content-evenly my-4" name="expense display list">
-                                <div class="flex-column">
-                                    <ul id="expense-list">
-
-                                    </ul id="expense-list">
-                                </div>
+                            <div id="expense-list" name="expense display list">
+                                <!-- sample expense -->
+                                <!-- <div>
+                                    <div class="d-flex row row-col-3 expense-item justify-content-between align-items-baseline text-danger">
+                                        <p class="h7 text-capitalize list-item col" >- expense name</p>
+                                        <p class="h6 list-item text col col-lg-4" >300</p>
+                                        <div class="col col-lg-2">
+                                            <a href="#" class="text-info edit-icon mx-2" data-id="">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="#" class="text-danger delete-icon mx-2" data-id="">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                                                
                             </div>
                         </div>                        
                     </div>
