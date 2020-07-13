@@ -111,10 +111,12 @@ class UI {
     //total expense
     totalExpense(){
         let total = 0
-        for(let i = 0; i < this.itemList.length; i ++){
-            total += this.itemList[i].amount;
-        }
-        return total
+        total = this.itemList.reduce((acc, curr) =>{
+            acc += curr.amount;
+            return acc;
+        }, 0);
+        this.expenseAmount.textContent = total;
+        return total;
     }
 }
 
